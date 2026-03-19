@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMarket</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+</head>
+
+
+<body>
+
+    <a href="#mainContent" class=" skip-link">Skip to main content</a>
+    <header>
+        <h1>AutoMarket</h1>
+        <p id="tel">📞0161 123 4567</p>
+        <button id="loginBtn">Login</button>
+    </header>
+
+    <nav id="navBar">
+        <a href="#mainContent">Home</a>
+        <a href="#featuredCars">Featured</a>
+        <a href="#saved">Saved</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <main id="mainContent">
+
+        <section id="hero">
+            <h2>Find Your Next Car</h2>
+            <p>Discover a wide range of new and used cars at unbeatable prices.</p>
+        </section>
+
+        <section id="search">
+            <form id="searchForm" action="submit">
+                <fieldset>
+                    <legend>Choose Make and Fuel Type</legend>
+                    <label for="make">Make</label>
+                    <select id="make" name="make">
+                        <option value="">Any</option>
+                    </select>
+
+                    <label for="fuel">Fuel Type</label>
+                    <select id="fuel" name="fuel">
+                        <option value="">Any</option>
+                    </select>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Price Range</legend>
+                    <label for="fromPrice">Minimum Price (£)</label>
+                    <input type="number" id="fromPrice" name="fromPrice" min="0">
+
+                    <label for="toPrice">Maximum Price (£)</label>
+                    <input type="number" id="toPrice" name="toPrice" min="fromPrice.value">
+
+                </fieldset>
+
+                <button type="submit">Search Vehicles</button>
+                <button type="button" id="clearBtn">Clear</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section id="whyUs">
+            <h2 id="whyUsHeading">Why Choose AutoMarket?</h2>
+
+            <div class="whyus-container">
+
+                <article class="whyus-container">
+                    <h3>Trusted Vehicles</h3>
+
+                    <p>All vehicles listed on our platform come from verified dealers and trusted sellers.</p>
+
+                </article>
+
+                <article class="whyus-container">
+                    <h3>Transparent Prices</h3>
+
+                    <p>Compare prices easily and find the best deals without hidden fees.</p>
+
+                </article>
+
+                <article class="whyus-container">
+                    <h3>Simple Search</h3>
+
+                    <p>Filter vehicles quickly by make, fuel type, year, and price.</p>
+
+                </article>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="brands">
+            <h2 id="brandsHeading">Top Brands</h2>
+
+            <div class="brandsContainer">
+                <article class="brand-img">
+                    <img src="images/ford.png" alt="Ford Logo">
+                    <p>Ford</p>
+                </article>
+
+                <article class="brand-img">
+                    <img src="images/vauxhall.png" alt="Vauxhall Logo">
+                    <p>Vauxhall</p>
+                </article>
+
+                <article class="brand-img">
+                    <img src="images/volkswagen.png" alt="Volkswagen Logo">
+                    <p>Volkswagen</p>
+                </article>
+
+                <article class="brand-img">
+                    <img src="images/audi.png" alt="Audi Logo">
+                    <p>Audi</p>
+                </article>
+
+                <article class="brand-img">
+                    <img src="images/bmw.png" alt="BMW Logo">
+                    <p>BMW</p>
+                </article>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="featuredCars">
+
+            <h2>Featured Vehicles</h2>
+
+            <div class="featured-container">
+
+                <article class="car-card">
+                    <img src="car1.jpg" alt="Audi A5 diesel vehicle">
+                    <h3>Audi A5</h3>
+                    <p>2020 - Diesel</p>
+                    <p class="price">£30,995</p>
+                </article>
+
+                <article class="car-card">
+                    <img src="car2.jpg" alt="BMW 5 Series diesel vehicle">
+                    <h3>BMW 5 Series</h3>
+                    <p>2020 - Diesel</p>
+                    <p class="price">£34,795</p>
+                </article>
+
+                <article class="car-card">
+                    <img src="car3.jpg" alt="Toyota C-HR hybrid vehicle">
+                    <h3>Toyota C-HR</h3>
+                    <p>2017 - Hybrid</p>
+                    <p class="price">£19,999</p>
+                </article>
+
+            </div>
+
+        </section>
+
+        <hr>
+
+        <section id="reviews">
+            <h2>Customer Reviews</h2>
+
+            <div class="review-container">
+
+                <article class="review">
+
+                    <p>"Great experience! Found my car quickly and the search system was very easy to use."</p>
+
+                    <span class="strong">James W.</span>
+
+                </article>
+
+                <article class="review">
+
+                    <p>"Excellent selection of vehicles and transparent pricing."</p>
+
+                    <span class="strong">Sarah M.</span>
+
+                </article>
+
+                <article class="review">
+
+                    <p>"Very simple and intuitive vehicle search platform."</p>
+
+                    <span class="strong">Daniel R.</span>
+
+                </article>
+
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="saved">
+            <h2>Saved Vehicles</h2>
+            <p>You have no saved vehicles yet. Please login to save your vehicles.</p>
+        </section>
+    </main>
+
+    <hr>
+
+    <footer id="contact">
+
+        <section>
+            <h3>Trusted Partners</h3>
+            <p>Auto Dealers Association</p>
+            <p>Vehicle Standards Agency</p>
+        </section>
+
+        <section>
+            <h3>Contact</h3>
+            <p>Email: support@drivefind.com</p>
+            <p>Phone: 0800 123 456</p>
+        </section>
+
+        <section>
+            <h3>Accreditations</h3>
+            <p>Verified Dealers</p>
+            <p>Secure Payments</p>
+        </section>
+
+        <p>© 2026 AutoMarket Vehicle Marketplace</p>
+
+    </footer>
+
+    <button id="backToTop">
+        🔝
+    </button>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
