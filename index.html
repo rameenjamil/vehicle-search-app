@@ -33,7 +33,7 @@
         </section>
 
         <section id="search">
-            <form id="searchForm" action="submit">
+            <form id="searchForm"> <!-- action removed because we will handle the search with JavaScript -->
                 <fieldset>
                     <legend>Choose From Make, Fuel Type and Price</legend>
                     <label for="make">Make</label>
@@ -58,14 +58,14 @@
                     </fieldset>
 
                     <fieldset>
-                        <label for="fromPrice">Minimum Price (£)</label>
-                        <input type="number" id="fromPrice" name="fromPrice" min="0">
+                        <label for="minPrice">Minimum Price (£)</label>
+                        <input type="number" id="minPrice" name="minPrice" min="0">
 
-                        <label for="toPrice">Maximum Price (£)</label>
-                        <input type="number" id="toPrice" name="toPrice" min="fromPrice.value">
+                        <label for="maxPrice">Maximum Price (£)</label>
+                        <input type="number" id="maxPrice" name="maxPrice" min="minPrice.value">
                     </fieldset>
 
-                    <button type="submit">Search Vehicles</button>
+                    <button>Search Vehicles</button>
                     <button type="button" id="clearBtn">Clear</button>
 
                 </fieldset>
