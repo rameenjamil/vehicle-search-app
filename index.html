@@ -41,17 +41,29 @@
                         <option value="">Any</option>
                     </select>
 
-                    <label for="fuel">Fuel Type</label>
-                    <select id="fuel" name="fuel">
-                        <option value="">Any</option>
-                    </select>
+                    <fieldset>
+                        <legend>Fuel Type</legend>
 
-                    <label for="fromPrice">Minimum Price (£)</label>
-                    <input type="number" id="fromPrice" name="fromPrice" min="0">
+                        <input type="radio" id="anyFuel" name="fuel" value="" checked>
+                        <label for="anyFuel">Any</label>
 
-                    <label for="toPrice">Maximum Price (£)</label>
-                    <input type="number" id="toPrice" name="toPrice" min="fromPrice.value">
+                        <input type="radio" id="petrol" name="fuel" value="Petrol">
+                        <label for="petrol">Petrol</label>
 
+                        <input type="radio" id="diesel" name="fuel" value="Diesel">
+                        <label for="diesel">Diesel</label>
+
+                        <input type="radio" id="electric" name="fuel" value="Electric">
+                        <label for="electric">Electric</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <label for="fromPrice">Minimum Price (£)</label>
+                        <input type="number" id="fromPrice" name="fromPrice" min="0">
+
+                        <label for="toPrice">Maximum Price (£)</label>
+                        <input type="number" id="toPrice" name="toPrice" min="fromPrice.value">
+                    </fieldset>
 
                     <button type="submit">Search Vehicles</button>
                     <button type="button" id="clearBtn">Clear</button>
@@ -97,27 +109,27 @@
 
             <div class="brandsContainer">
                 <article class="brand-img">
-                    <img src="images/ford.png" alt="Ford Logo">
+                    <!-- <img src="images/ford.png" alt="Ford Logo"> -->
                     <p>Ford</p>
                 </article>
 
                 <article class="brand-img">
-                    <img src="images/vauxhall.png" alt="Vauxhall Logo">
+                    <!-- <img src="images/vauxhall.png" alt="Vauxhall Logo"> -->
                     <p>Vauxhall</p>
                 </article>
 
                 <article class="brand-img">
-                    <img src="images/volkswagen.png" alt="Volkswagen Logo">
+                    <!-- <img src="images/volkswagen.png" alt="Volkswagen Logo"> -->
                     <p>Volkswagen</p>
                 </article>
 
                 <article class="brand-img">
-                    <img src="images/audi.png" alt="Audi Logo">
+                    <!-- <img src="images/audi.png" alt="Audi Logo"> -->
                     <p>Audi</p>
                 </article>
 
                 <article class="brand-img">
-                    <img src="images/bmw.png" alt="BMW Logo">
+                    <!-- <img src="images/bmw.png" alt="BMW Logo"> -->
                     <p>BMW</p>
                 </article>
             </div>
@@ -132,21 +144,21 @@
             <div class="featured-container">
 
                 <article class="car-card">
-                    <img src="car1.jpg" alt="Audi A5 diesel vehicle">
+                    <!-- <img src="car1.jpg" alt="Audi A5 diesel vehicle"> -->
                     <h3>Audi A5</h3>
                     <p>2020 - Diesel</p>
                     <p class="price">£30,995</p>
                 </article>
 
                 <article class="car-card">
-                    <img src="car2.jpg" alt="BMW 5 Series diesel vehicle">
+                    <!-- <img src="car2.jpg" alt="BMW 5 Series diesel vehicle"> -->
                     <h3>BMW 5 Series</h3>
                     <p>2020 - Diesel</p>
                     <p class="price">£34,795</p>
                 </article>
 
                 <article class="car-card">
-                    <img src="car3.jpg" alt="Toyota C-HR hybrid vehicle">
+                    <!-- <img src="car3.jpg" alt="Toyota C-HR hybrid vehicle"> -->
                     <h3>Toyota C-HR</h3>
                     <p>2017 - Hybrid</p>
                     <p class="price">£19,999</p>
