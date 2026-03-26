@@ -11,6 +11,7 @@ function start() {
         populateMakeDropdown(cars)
     })
     searchForm.addEventListener('submit', handleFormSubmission);
+    document.getElementById('clearBtn').addEventListener('click', clearForm)
 }
 
 function getData() {
@@ -44,6 +45,11 @@ function handleFormSubmission(e) {
     var minPrice = Number(document.getElementById('minPrice').value) || 0; //if the user doesn't enter a value, it will default to 0
     var maxPrice = Number(document.getElementById('maxPrice').value) || Infinity
 
+    if (minPrice > maxPrice) {
+        alert('Minimum price cannot be greater than maximum price');
+        return;
+    }
+
     data.then(function (cars) {
         var results = filterCars(cars, selectedMake, selectedFuel, minPrice, maxPrice);
         console.log(results);
@@ -64,9 +70,20 @@ function filterCars(cars, make, fuel, minPrice, maxPrice) {
 
         var matchesMake = make === '' || car.make.toLowerCase() === make;
         var matchesFuel = fuel === '' || car.fuelType.toLowerCase() === fuel;
-        var matchesPrice = car.price >= minPrice && car.price <= maxPrice
+        var matchesPrice = car.price >= minPrice && car.price <= maxPrice //max price is inclusive
 
         return matchesMake && matchesFuel && matchesPrice;
     })
 
+}
+
+function clearForm() {
+
+    document.getElementById('make').value = '';
+    document.getElementById('anyFuel').checked = true
+
+    document.getElementById('minPrice').value = '';
+    document.getElementById('maxPrice').value = '';
+
+    console.log('Form cleared');
 }
