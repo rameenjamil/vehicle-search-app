@@ -53,6 +53,7 @@ function handleFormSubmission(e) {
     data.then(function (cars) {
         var results = filterCars(cars, selectedMake, selectedFuel, minPrice, maxPrice);
         console.log(results);
+        renderResults(results);
     })
 }
 
@@ -80,10 +81,62 @@ function filterCars(cars, make, fuel, minPrice, maxPrice) {
 function clearForm() {
 
     document.getElementById('make').value = '';
+
     document.getElementById('anyFuel').checked = true
 
     document.getElementById('minPrice').value = '';
     document.getElementById('maxPrice').value = '';
 
     console.log('Form cleared');
+}
+
+function createElement(name, text) {
+    var element = document.createElement(name);
+
+    if (text !== undefined) {
+        element.innerText = text;
+    }
+    return element;
+}
+
+function renderResults(results) {
+    var container = document.getElementById('resultContainer');
+    container.innerHTML = '';
+
+    if (results.length === 0) {
+        container.appendChild(createElement('p', 'No results found.'));
+        return;
+    }
+
+    results.forEach(function (car) {
+
+        var card = document.createElement('div');
+        card.className = 'car-card';
+
+        var image = document.createElement('img');
+        image.src = car.image || '';
+        image.alt = car.make + ' ' + car.model;
+
+        image.onerror = function () {
+            var errorText = createElement('p', 'Image not available');
+            errorText.className = 'image-error';
+            this.replaceWith(errorText);
+        };
+
+        var title = createElement('h3', car.make + ' ' + car.model);
+        var price = createElement('p', 'Price: £' + car.price.toLocaleString());
+        var fuel = createElement('p', 'Fuel Type: ' + car.fuelType);
+        var year = createElement('p', 'Year: ' + car.year);
+
+        var button = document.createElement('button');
+        button.innerText = 'View Details';
+        button.className = 'details-btn';
+
+        button.addEventListener('click', function () {
+            alert('You clicked on ' + car.make + ' ' + car.model);
+        });
+
+        card.append(image, title, price, fuel, year, button);
+        container.appendChild(card);
+    });
 }
