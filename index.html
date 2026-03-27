@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoMarket</title>
-    <!-- <link rel="shortcut icon" href="favicon.png" type="image/x-icon"> -->
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 
@@ -13,9 +14,17 @@
 
     <a href="#mainContent" class=" skip-link">Skip to main content</a>
     <header>
-        <h1>AutoMarket</h1>
-        <p id="tel">📞0161 123 4567</p>
-        <button id="loginBtn">Login</button>
+        <div class="top-bar">
+            <div class="logo-container">
+                <img src="images/myicon.png" alt="AutoMarket logo" class="logo">
+
+            </div>
+
+            <div class="info">
+                <p id="tel">📞0161 123 4567</p>
+                <button id="loginBtn">Login</button>
+            </div>
+        </div>
     </header>
 
     <nav id="navBar">
@@ -25,15 +34,16 @@
         <a href="#contact">Contact Us</a>
     </nav>
 
+    <section id="hero">
+        <h2>Find Your Next Car</h2>
+        <p>Discover a wide range of new and used cars at unbeatable prices.</p>
+    </section>
+
     <main id="mainContent">
 
-        <section id="hero">
-            <h2>Find Your Next Car</h2>
-            <p>Discover a wide range of new and used cars at unbeatable prices.</p>
-        </section>
 
         <section id="search">
-            <form id="searchForm"> <!-- action removed because we will handle the search with JavaScript -->
+            <form id="searchForm">
                 <fieldset>
                     <legend>Choose From Make, Fuel Type and Price</legend>
                     <label for="make">Make</label>
@@ -41,67 +51,68 @@
                         <option value="">Any</option>
                     </select>
 
-                    <fieldset>
+                    <fieldset class="fuel-group">
                         <legend>Fuel Type</legend>
-
-                        <input type="radio" id="anyFuel" name="fuel" value="" checked>
-                        <label for="anyFuel">Any</label>
-
-                        <input type="radio" id="petrol" name="fuel" value="Petrol">
-                        <label for="petrol">Petrol</label>
-
-                        <input type="radio" id="diesel" name="fuel" value="Diesel">
-                        <label for="diesel">Diesel</label>
-
-                        <input type="radio" id="electric" name="fuel" value="Electric">
-                        <label for="electric">Electric</label>
+                        <label><input type="radio" id="anyFuel" name="fuel" value="" checked> Any</label>
+                        <label><input type="radio" name="fuel" value="Petrol"> Petrol</label>
+                        <label><input type="radio" name="fuel" value="Diesel"> Diesel</label>
+                        <label><input type="radio" name="fuel" value="Electric"> Electric</label>
+                        <label><input type="radio" name="fuel" value="Hybrid"> Hybrid</label>
                     </fieldset>
 
-                    <fieldset>
-                        <label for="minPrice">Minimum Price (£)</label>
-                        <input type="number" id="minPrice" name="minPrice" min="0">
+                    <div class="price-group">
+                        <div class="form-group">
+                            <label for="minPrice">Minimum Price (£)</label>
+                            <input type="number" id="minPrice" name="minPrice" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="maxPrice">Maximum Price (£)</label>
+                            <input type="number" id="maxPrice" name="maxPrice" min="0">
+                        </div>
+                    </div>
 
-                        <label for="maxPrice">Maximum Price (£)</label>
-                        <input type="number" id="maxPrice" name="maxPrice" min="0">
-                    </fieldset>
-
-                    <button>Search Vehicles</button>
-                    <button type="button" id="clearBtn">Clear</button>
+                    <div class="button-group">
+                        <button type="submit">🔍 Search Vehicles</button>
+                        <button type="button" id="clearBtn">✕ Clear</button>
+                    </div>
 
                 </fieldset>
             </form>
         </section>
 
-        <hr>
+
 
         <!-- aria-live added for accessibility to announce search results updates dynamically -->
         <section aria-live="polite">
-            <h2>Search Results</h2>
+            <h2 id="resultsHeading" class="hidden">📜 Results Found:</h2>
             <div id="resultContainer"></div>
         </section>
 
-        <hr>
-
         <section id="whyUs">
-            <h2 id="whyUsHeading">Why Choose AutoMarket?</h2>
+            <div class="whyus-wrapper">
+                <h2 id="whyUsHeading">Why Choose AutoMarket? 🚗</h2>
+            </div>
 
             <div class="whyus-container">
 
-                <article class="whyus-container">
+                <article class="whyus-card">
+                    <div class="whyus-icon">🛡️</div>
                     <h3>Trusted Vehicles</h3>
 
                     <p>All vehicles listed on our platform come from verified dealers and trusted sellers.</p>
 
                 </article>
 
-                <article class="whyus-container">
+                <article class="whyus-card">
+                    <div class="whyus-icon">💷</div>
                     <h3>Transparent Prices</h3>
 
                     <p>Compare prices easily and find the best deals without hidden fees.</p>
 
                 </article>
 
-                <article class="whyus-container">
+                <article class="whyus-card">
+                    <div class="whyus-icon">🔍</div>
                     <h3>Simple Search</h3>
 
                     <p>Filter vehicles quickly by make, fuel type, year, and price.</p>
@@ -110,44 +121,62 @@
             </div>
         </section>
 
-        <hr>
-
         <section id="brands">
-            <h2 id="brandsHeading">Top Brands</h2>
+            <h2 id="brandsHeading">Our Brands</h2>
 
-            <div class="brandsContainer">
-                <article class="brand-img">
-                    <!-- <img src="images/ford.png" alt="Ford Logo"> -->
+            <div class="brands-container">
+
+                <article class="brand-card">
+                    <img src="cars logo/ford.png" alt="Ford logo">
                     <p>Ford</p>
                 </article>
 
-                <article class="brand-img">
-                    <!-- <img src="images/vauxhall.png" alt="Vauxhall Logo"> -->
+                <article class="brand-card">
+                    <img src="cars logo/vauxhall.png" alt="Vauxhall logo">
                     <p>Vauxhall</p>
                 </article>
 
-                <article class="brand-img">
-                    <!-- <img src="images/volkswagen.png" alt="Volkswagen Logo"> -->
+                <article class="brand-card">
+                    <img src="cars logo/volkswagen.png" alt="Volkswagen logo">
                     <p>Volkswagen</p>
                 </article>
 
-                <article class="brand-img">
-                    <!-- <img src="images/audi.png" alt="Audi Logo"> -->
+                <article class="brand-card">
+                    <img src="cars logo/audi.png" alt="Audi logo">
                     <p>Audi</p>
                 </article>
 
-                <article class="brand-img">
-                    <!-- <img src="images/bmw.png" alt="BMW Logo"> -->
+                <article class="brand-card">
+                    <img src="cars logo/bmw.png" alt="BMW logo">
                     <p>BMW</p>
                 </article>
+
+                <article class="brand-card">
+                    <img src="cars logo/Skoda.png" alt="BMW logo">
+                    <p>Škoda</p>
+                </article>
+
+                <article class="brand-card">
+                    <img src="cars logo/Mercedes-Benz.png" alt="BMW logo">
+                    <p>Mercedes-Benz</p>
+                </article>
+
+                <article class="brand-card">
+                    <img src="cars logo/toyota.png" alt="BMW logo">
+                    <p>Toyota</p>
+                </article>
+
+                <article class="brand-card">
+                    <img src="cars logo/hyundai.png" alt="BMW logo">
+                    <p>Hyundai</p>
+                </article>
+
             </div>
         </section>
 
-        <hr>
-
         <section id="featuredCars">
 
-            <h2>Featured Vehicles</h2>
+            <h2 id="featuredHeading">Featured Vehicles</h2>
 
             <div class="featured-container">
 
@@ -175,8 +204,6 @@
             </div>
 
         </section>
-
-        <hr>
 
         <section id="reviews">
             <h2>Customer Reviews</h2>
@@ -210,15 +237,11 @@
             </div>
         </section>
 
-        <hr>
-
         <section id="saved">
             <h2>Saved Vehicles</h2>
             <p>You have no saved vehicles yet. Please login to save your vehicles.</p>
         </section>
     </main>
-
-    <hr>
 
     <footer id="contact">
 

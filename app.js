@@ -3,6 +3,27 @@ var searchForm = document.forms.searchForm
 
 var data = getData()
 
+// Get the button
+var scrollToTopBtn = document.getElementById("backToTop");
+
+// Function to show or hide the button based on scroll position
+window.onscroll = function () {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollToTopBtn.classList.add('show');
+    } else {
+        scrollToTopBtn.classList.remove('show');
+    }
+};
+
+// Function to smoothly scroll back to the top
+scrollToTopBtn.addEventListener("click", function () {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+
 function start() {
     console.log('Page loaded');
 
@@ -12,6 +33,15 @@ function start() {
     })
     searchForm.addEventListener('submit', handleFormSubmission);
     document.getElementById('clearBtn').addEventListener('click', clearForm)
+
+    //instant search functionality - event listeners 
+    document.getElementById('make').addEventListener('change', runSearch);
+    document.querySelectorAll('input[name="fuel"]').forEach(function (radio) {
+        radio.addEventListener('change', runSearch);
+    });
+
+    document.getElementById('minPrice').addEventListener('input', runSearch);
+    document.getElementById('maxPrice').addEventListener('input', runSearch);
 }
 
 function getData() {
@@ -54,6 +84,7 @@ function handleFormSubmission(e) {
         var results = filterCars(cars, selectedMake, selectedFuel, minPrice, maxPrice);
         console.log(results);
         renderResults(results);
+        document.getElementById('resultsHeading').classList.remove('hidden');
     })
 }
 
@@ -79,13 +110,10 @@ function filterCars(cars, make, fuel, minPrice, maxPrice) {
 }
 
 function clearForm() {
+    searchForm.reset(); // resets ALL form inputs automatically
 
-    document.getElementById('make').value = '';
-
-    document.getElementById('anyFuel').checked = true
-
-    document.getElementById('minPrice').value = '';
-    document.getElementById('maxPrice').value = '';
+    document.getElementById('resultContainer').innerHTML = '';
+    document.getElementById('resultsHeading').classList.add('hidden');
 
     console.log('Form cleared');
 }
@@ -138,5 +166,21 @@ function renderResults(results) {
 
         card.append(image, title, price, fuel, year, button);
         container.appendChild(card);
+    });
+}
+
+function runSearch() {
+
+    var selectedMake = document.getElementById('make').value;
+
+    var fuelInput = document.querySelector('input[name="fuel"]:checked');
+    var selectedFuel = fuelInput ? fuelInput.value : '';
+
+    var minPrice = Number(document.getElementById('minPrice').value) || 0;
+    var maxPrice = Number(document.getElementById('maxPrice').value) || Infinity;
+
+    data.then(function (cars) {
+        var results = filterCars(cars, selectedMake, selectedFuel, minPrice, maxPrice);
+        renderResults(results);
     });
 }
