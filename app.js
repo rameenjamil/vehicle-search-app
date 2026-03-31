@@ -30,6 +30,9 @@ function start() {
     data.then(function (cars) {
         // console.log(cars);
         populateMakeDropdown(cars)
+
+        var featured = cars.slice(0, 3)
+        renderResults(featured, 'featuredContainer', 'featured-car')
     })
     searchForm.addEventListener('submit', handleFormSubmission);
     document.getElementById('clearBtn').addEventListener('click', clearForm)
@@ -83,7 +86,7 @@ function handleFormSubmission(e) {
     data.then(function (cars) {
         var results = filterCars(cars, selectedMake, selectedFuel, minPrice, maxPrice);
         console.log(results);
-        renderResults(results);
+        renderResults(results, 'resultContainer', 'car-card');
         document.getElementById('resultsHeading').classList.remove('hidden');
     })
 }
@@ -127,8 +130,8 @@ function createElement(name, text) {
     return element;
 }
 
-function renderResults(results) {
-    var container = document.getElementById('resultContainer');
+function renderResults(results, containerId, cardClass) {
+    var container = document.getElementById(containerId);
     container.innerHTML = '';
 
     if (results.length === 0) {
@@ -139,7 +142,7 @@ function renderResults(results) {
     results.forEach(function (car) {
 
         var card = document.createElement('div');
-        card.className = 'car-card';
+        card.className = cardClass;
 
         var image = document.createElement('img');
         image.src = car.image || '';
