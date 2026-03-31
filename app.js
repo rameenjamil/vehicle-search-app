@@ -3,6 +3,8 @@ var searchForm = document.forms.searchForm
 
 var data = getData()
 
+var isLoggedIn = false;
+
 // Get the button
 var scrollToTopBtn = document.getElementById("backToTop");
 
@@ -26,6 +28,27 @@ scrollToTopBtn.addEventListener("click", function () {
 
 function start() {
     console.log('Page loaded');
+
+    // modal login
+    const openModalBtn = document.getElementById("loginBtn");
+    const modalOverlay = document.getElementById("modalOverlay");
+    const closeModalBtn = document.getElementById("closeModal");
+
+    openModalBtn.addEventListener('click', () => {
+        modalOverlay.style.display = 'flex';
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+        modalOverlay.style.display = 'none';
+    });
+
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+            modalOverlay.style.display = 'none';
+        }
+    });
+
+    document.getElementById("loginForm").addEventListener("submit", handleLogin);
 
     data.then(function (cars) {
         // console.log(cars);
@@ -186,4 +209,32 @@ function runSearch() {
         var results = filterCars(cars, selectedMake, selectedFuel, minPrice, maxPrice);
         renderResults(results);
     });
+}
+
+function handleLogin(e) {
+    e.preventDefault();
+
+    var user = document.getElementById("username").value.trim();
+    var pass = document.getElementById("password").value.trim();
+    var errorMsg = document.getElementById("errorMsg");
+
+    var VALID_USER = "lecturer@test.com";
+    var VALID_PASS = "cars123";
+
+    if (!user.includes("@") || !user.includes(".")) {
+        errorMsg.innerText = "Please enter a valid email address";
+        return;
+    }
+
+    if (user === VALID_USER && pass === VALID_PASS) {
+        isLoggedIn = true;
+
+        document.getElementById("modalOverlay").style.display = 'none';
+        errorMsg.innerText = "";
+
+        alert("Login successful!");
+        document.getElementById("loginBtn").innerText = "Logout";
+    } else {
+        errorMsg.innerText = "Invalid credentials";
+    }
 }

@@ -158,7 +158,7 @@ main {
     border-radius: 12px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
     position: relative;
-    z-index: 10;
+    z-index: 1;
 }
 
 
@@ -364,16 +364,6 @@ legend {
     border-bottom: 1px solid #ddd;
 }
 
-/* .image-error {
-    width: 100%;
-    height: 180px;
-    background: #eee;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #666;
-    font-style: italic;
-} */
 
 /* why US section */
 
@@ -578,9 +568,7 @@ legend {
     margin-top: 30px;
 }
 
-/* ============================= */
-/* REVIEWS */
-/* ============================= */
+/* reviews */
 
 .review-container {
     display: flex;
@@ -594,9 +582,7 @@ legend {
     border-left: 5px solid var(--primary-blue);
 }
 
-/* ============================= */
-/* FOOTER */
-/* ============================= */
+/* footer */
 
 footer {
     background: var(--dark-blue);
@@ -609,9 +595,152 @@ footer section {
     margin-bottom: 15px;
 }
 
-/* ============================= */
-/* BACK TO TOP */
-/* ============================= */
+#loginBtn {
+    background-color: #063362;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+#loginBtn:hover {
+    color: #ffd166;
+    background-color: #063362;
+    /* accessible highlight */
+    transform: scale(1.08);
+}
+
+/* overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+/*modal box*/
+.modal {
+    background: var(--background);
+    border-radius: 16px;
+    padding: 35px 30px 25px;
+    width: 350px;
+
+    box-shadow: 0 12px 40px rgba(0, 61, 128, 0.25);
+    position: relative;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal h2 {
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+/* INPUTS */
+.modal input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+
+    border: 1px solid var(--light-blue);
+    border-radius: 10px;
+
+    font-size: 15px;
+    background: #f0f4fa;
+    color: var(--text-dark);
+}
+
+/* login button */
+.modal button {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+
+    background: linear-gradient(to right, var(--primary-blue), var(--dark-blue));
+    color: white;
+
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+
+    transition: opacity 0.2s ease;
+}
+
+.modal button:hover {
+    opacity: 0.9;
+}
+
+.login-btn {
+    width: 100%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    width: 32px;
+    height: 32px;
+
+    background-color: var(--light-blue);
+    color: var(--primary-blue);
+
+    border: none;
+    border-radius: 50%;
+
+    font-size: 20px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: background 0.3s;
+}
+
+.close-btn:hover {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+/* error message */
+#errorMsg {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* back to top */
 
 #backToTop {
     position: fixed;
