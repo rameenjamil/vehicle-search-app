@@ -10,7 +10,7 @@
 * {
     margin: 0;
     padding: 0;
-    /*box-sizing: border-box;*/
+    box-sizing: border-box;
 }
 
 html {
@@ -23,7 +23,6 @@ body {
     font-family: Arial, sans-serif;
     background: #f4f6f9;
     color: var(--text-dark);
-    /* line-height: 1.6; */
 }
 
 /* skip-link */
@@ -105,8 +104,7 @@ nav a {
 
 nav a:hover {
     color: #ffd166;
-    background-color: #063362;
-    /* accessible highlight */
+    background-color: var(--dark-blue);
     transform: scale(1.08);
 }
 
@@ -137,7 +135,7 @@ nav a:hover {
 #hero p {
     position: relative;
     z-index: 2;
-    background-color: #003d80;
+    background-color: var(--dark-blue);
 
 }
 
@@ -160,7 +158,6 @@ section h2 {
 #search {
     max-width: 800px;
     margin: -80px auto 40px;
-    /*overlap */
     background: white;
     padding: 30px;
     border-radius: 12px;
@@ -212,13 +209,6 @@ legend {
     margin-bottom: 10px;
 }
 
-#search>form>fieldset>legend {
-    font-weight: 600;
-    font-size: 14px;
-    color: #6c757d;
-    margin-bottom: 16px;
-}
-
 .fuel-group legend {
     font-weight: 600;
     color: #1a1a1a;
@@ -242,7 +232,7 @@ legend {
 }
 
 .fuel-group input {
-    accent-color: #0056b3;
+    accent-color: var(--primary-blue);
 
 }
 
@@ -267,7 +257,7 @@ legend {
     border: none;
     cursor: pointer;
     font-size: 14px;
-    background: #2d5be3;
+    background: var(--primary-blue);
     color: white;
     font-weight: bold;
     font-size: 15px;
@@ -280,7 +270,6 @@ legend {
 
 #clearBtn {
     background: #6c757d;
-    /* muted grey */
     color: white;
 }
 
@@ -318,6 +307,8 @@ legend {
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
     margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 
@@ -325,10 +316,11 @@ legend {
 
 .car-card {
     background: white;
-    border-radius: 12px;
+    border-radius: 14px;
     overflow: hidden;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    transition: 0.2s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .car-card:hover {
@@ -369,13 +361,24 @@ legend {
     border-bottom: 1px solid #ddd;
 }
 
+.image-wrapper img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.details-btn {
+    background-color: var(--dark-blue);
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
 
 /* why US section */
 
 #whyUs {
     background: #eaf2ff;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
+    width: 100%;
     padding: 60px 20px;
 }
 
@@ -411,7 +414,7 @@ legend {
 }
 
 .whyus-container p {
-    color: #063362;
+    color: var(--primary-blue);
     font-size: 14px;
     line-height: 1.5;
 }
@@ -445,7 +448,7 @@ legend {
 #brandsHeading {
     text-align: center;
     padding-top: 30px;
-    color: #063362;
+    color: var(--dark-blue);
 }
 
 .brand-card {
@@ -461,13 +464,12 @@ legend {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* LOGO */
+/* logo */
 .brand-card img {
     width: 80px;
     height: 80px;
     object-fit: contain;
 }
-
 
 .brand-card p {
     font-weight: 600;
@@ -477,79 +479,10 @@ legend {
     background: #f8f9fa;
 }
 
-/* featured section */
+/* featured vehicles */
 
-#featuredHeading {
-    text-align: center;
-    padding-top: 30px;
-    color: #063362;
-}
-
-.featured-card {
-    background: white;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-}
-
-.featured-card {
-    background: white;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-}
-
-.save-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: white;
-    border: none;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-    font-size: 16px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-.featured-content {
-    padding: 18px;
-}
-
-.featured-content h3 {
-    margin-bottom: 5px;
-}
-
-.meta {
-    color: #777;
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-.price {
-    font-size: 22px;
-    font-weight: bold;
-    color: #2563eb;
-    margin-bottom: 15px;
-}
-
-.details-btn {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background: #2563eb;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.featured-container {
+.featured-container,
+#resultContainer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
@@ -570,6 +503,7 @@ legend {
     border-left: 5px solid var(--primary-blue);
 }
 
+
 /* footer */
 
 footer {
@@ -579,7 +513,6 @@ footer {
     margin-top: 40px;
     display: flex;
     flex-direction: column;
-    /* 📱 mobile */
     gap: 20px;
     text-align: center;
 }
@@ -612,12 +545,16 @@ footer p {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: var(--primary-blue);
-    color: white;
     border: none;
     padding: 12px 16px;
     font-size: 20px;
     border-radius: 50%;
     cursor: pointer;
     display: none;
+}
+
+#backToTop.show {
+    display: block;
+    background-color: var(--primary-blue);
+    color: white;
 }

@@ -4,6 +4,7 @@ var searchForm = document.forms.searchForm
 var data = getData()
 
 
+
 // Get the button
 var scrollToTopBtn = document.getElementById("backToTop");
 
@@ -31,10 +32,9 @@ function start() {
     data.then(function (cars) {
         // console.log(cars);
         populateMakeDropdown(cars)
-
-        var featured = cars.slice(0, 3)
-        renderResults(featured, 'featuredContainer', 'featured-card', false)
     })
+    loadFeaturedCars()
+
     searchForm.addEventListener('submit', handleFormSubmission);
     document.getElementById('clearBtn').addEventListener('click', clearForm)
 
@@ -98,7 +98,7 @@ function filterCars(cars, make, fuel, minPrice, maxPrice) {
 }
 
 function clearForm() {
-    searchForm.reset(); // resets ALL form inputs automatically
+    searchForm.reset();
 
     document.getElementById('resultContainer').innerHTML = '';
     document.getElementById('resultsHeading').classList.add('hidden');
@@ -115,7 +115,7 @@ function createElement(name, text) {
     return element;
 }
 
-function renderResults(results, containerId, cardClass, isPreview) {
+function renderCars(results, containerId, cardClass, isPreview) {
     var container = document.getElementById(containerId);
     container.innerHTML = '';
 
@@ -126,22 +126,27 @@ function renderResults(results, containerId, cardClass, isPreview) {
 
     results.forEach(function (car) {
 
-        var card = document.createElement('div');
+        var card = document.createElement('article');
         card.className = cardClass;
+
+        var imageWrapper = document.createElement('div');
+        imageWrapper.className = 'image-wrapper';
+
         var image = document.createElement('img');
-        image.src = car.image || '';
-        if (!car.image) {
-            image.scr = 'images/myicon.png'
-        }
+        image.src = car.image ? car.image : 'images/myicon.png';
         image.alt = car.make + ' ' + car.model;
+        imageWrapper.appendChild(image)
+
+        var content = createElement('div')
+        content.className = 'featured-content'
 
         var title = createElement('h3', car.make + ' ' + car.model);
         var price = createElement('p', 'Price: £' + car.price.toLocaleString());
-        var fuel = createElement('p', 'Fuel Type: ' + car.fuelType);
-        var year = createElement('p', 'Year: ' + car.year);
+        price.className = 'price'
+        var meta = createElement('p', car.year + ' - ' + car.fuelType);
+        meta.className = 'meta'
 
-        var button = document.createElement('button');
-        button.innerText = 'View Details';
+        var button = createElement('button', 'View Details');
         button.className = 'details-btn';
 
         button.addEventListener('click', function () {
@@ -155,8 +160,10 @@ function renderResults(results, containerId, cardClass, isPreview) {
             );
             card.append(simple);
         } else {
-            card.append(image, title, price, fuel, year, button);
+            content.append(image, title, price, meta, button);
         }
+
+        card.append(imageWrapper, content)
         container.appendChild(card);
     });
 }
@@ -184,7 +191,16 @@ function performSearch(isPreview) {
             results = results.slice(0, 5);
         }
 
-        renderResults(results, 'resultContainer', 'car-card', isPreview);
+        renderCars(results, 'resultContainer', 'car-card', isPreview);
         document.getElementById('resultsHeading').classList.remove('hidden');
+    });
+}
+
+function loadFeaturedCars() {
+    data.then(function (cars) {
+
+        var featuredCars = cars.slice(0, 3);
+
+        renderCars(featuredCars, 'featuredContainer', 'car-card', false);
     });
 }
