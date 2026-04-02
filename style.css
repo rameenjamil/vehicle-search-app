@@ -91,12 +91,16 @@ nav {
     position: sticky;
     top: 0;
     z-index: 999;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin: 0 20px;
+    margin: 5 10px;
     font-weight: 500;
     display: inline-block;
     transition: transform 0.2s ease, color 0.2s ease;
@@ -152,6 +156,10 @@ section h2 {
     text-align: center;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
 
 /* search styling */
 
@@ -279,22 +287,6 @@ legend {
     color: #ffd166;
 }
 
-/* responsive */
-
-@media (max-width: 700px) {
-    #search form {
-        grid-template-columns: 1fr;
-    }
-
-    .fuel-group {
-        grid-column: span 1;
-    }
-
-    .price-group {
-        grid-template-columns: 1fr;
-    }
-
-}
 
 /* results container */
 
@@ -562,4 +554,73 @@ footer p {
     display: block;
     background-color: var(--primary-blue);
     color: white;
+}
+
+/* responsive */
+
+@media (max-width: 700px) {
+    #search form {
+        grid-template-columns: 1fr;
+    }
+
+    .fuel-group {
+        grid-column: span 1;
+    }
+
+    .price-group {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    header {
+        text-align: center;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        gap: 10px;
+
+        justify-content: center;
+        /* ✅ ADD THIS */
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    #hero h2 {
+        font-size: 20px;
+    }
+
+    #hero p {
+        font-size: 14px;
+    }
+
+    .button-group {
+        grid-template-columns: 1fr;
+    }
+
+    .price-group {
+        grid-template-columns: 1fr;
+    }
+
+    .review-container {
+        flex-direction: column;
+    }
+
+    /* ✅ ADD THESE LINES HERE */
+    .info {
+        display: none;
+    }
+
+    .logo-container {
+        justify-content: center;
+    }
+
+    .logo {
+        width: 100px;
+    }
 }

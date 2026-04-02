@@ -9,7 +9,8 @@
         "fuelType": "Petrol",
         "tax": 150,
         "mpg": 47.1,
-        "engineSize": 1.5
+        "engineSize": 1.5,
+        "image": "images/vauxhallInsignia.jpg"
     },
     {
         "make": "Audi",
@@ -21,7 +22,8 @@
         "fuelType": "Diesel",
         "tax": 145,
         "mpg": 45.6,
-        "engineSize": 2.0
+        "engineSize": 2.0,
+        "image": "images/audiA5.jpg"
     },
     {
         "make": "Audi",
@@ -33,7 +35,8 @@
         "fuelType": "Diesel",
         "tax": 30,
         "mpg": 60.1,
-        "engineSize": 2.0
+        "engineSize": 2.0,
+        "image": "images/audiQ3.jpg"
     },
     {
         "make": "BMW",
@@ -45,7 +48,8 @@
         "fuelType": "Diesel",
         "tax": 145,
         "mpg": 55.4,
-        "engineSize": 2.0
+        "engineSize": 2.0,
+        "image": "images/bmw5Series.jpg"
     },
     {
         "make": "Vauxhall",
@@ -57,7 +61,8 @@
         "fuelType": "Petrol",
         "tax": 20,
         "mpg": 62.8,
-        "engineSize": 1.0
+        "engineSize": 1.0,
+        "image": "images/vauxhallAstra.jpg"
     },
     {
         "make": "Mercedes",
@@ -69,7 +74,8 @@
         "fuelType": "Diesel",
         "tax": 145,
         "mpg": 42.8,
-        "engineSize": 3.0
+        "engineSize": 3.0,
+        "image": "images/mercedes.jpg"
     },
     {
         "make": "Volkswagen",
@@ -81,7 +87,8 @@
         "fuelType": "Petrol",
         "tax": 145,
         "mpg": 64.2,
-        "engineSize": 1.0
+        "engineSize": 1.0,
+        "image": "images/volkswagenPolo.jpg"
     },
     {
         "make": "Vauxhall",
@@ -93,7 +100,8 @@
         "fuelType": "Petrol",
         "tax": 145,
         "mpg": 49.6,
-        "engineSize": 1.4
+        "engineSize": 1.4,
+        "image": "images/vauxhallCorsa.jpg"
     },
     {
         "make": "Ford",
@@ -105,7 +113,8 @@
         "fuelType": "Petrol",
         "tax": 145,
         "mpg": 41.5,
-        "engineSize": 2.0
+        "engineSize": 2.0,
+        "image": "images/fordFocus.jpg"
     },
     {
         "make": "Toyota",
@@ -117,7 +126,8 @@
         "fuelType": "Hybrid",
         "tax": 0,
         "mpg": 74.3,
-        "engineSize": 1.8
+        "engineSize": 1.8,
+        "image": "images/toyotaChr.jpg"
     },
     {
         "make": "Volkswagen",
@@ -129,7 +139,8 @@
         "fuelType": "Petrol",
         "tax": 150,
         "mpg": 64.2,
-        "engineSize": 1.0
+        "engineSize": 1.0,
+        "image": "images/volkswagenUp.jpg"
     },
     {
         "make": "Skoda",
@@ -141,7 +152,8 @@
         "fuelType": "Diesel",
         "tax": 0,
         "mpg": 74.3,
-        "engineSize": 1.6
+        "engineSize": 1.6,
+        "image": "images/skodaOctavia.jpg"
     },
     {
         "make": "BMW",
@@ -153,7 +165,8 @@
         "fuelType": "Diesel",
         "tax": 30,
         "mpg": 62.8,
-        "engineSize": 2.0
+        "engineSize": 2.0,
+        "image": "images/bmw1Series.jpg"
     },
     {
         "make": "Skoda",
@@ -165,7 +178,8 @@
         "fuelType": "Petrol",
         "tax": 200,
         "mpg": 39.8,
-        "engineSize": 2.0
+        "engineSize": 2.0,
+        "image": "images/skodaSuperb.jpg"
     },
     {
         "make": "BMW",
@@ -177,7 +191,8 @@
         "fuelType": "Petrol",
         "tax": 150,
         "mpg": 41.5,
-        "engineSize": 3.0
+        "engineSize": 3.0,
+        "image": "images/bmw4Series.jpg"
     },
     {
         "make": "Vauxhall",
@@ -189,7 +204,8 @@
         "fuelType": "Petrol",
         "tax": 145,
         "mpg": 43.5,
-        "engineSize": 1.2
+        "engineSize": 1.2,
+        "image": "images/vauxhallGrandland.jpg"
     },
     {
         "make": "Vauxhall",
@@ -201,7 +217,8 @@
         "fuelType": "Petrol",
         "tax": 145,
         "mpg": 43.5,
-        "engineSize": 1.4
+        "engineSize": 1.4,
+        "image": "images/vauxhall2019.jpg"
     },
     {
         "make": "BMW",
@@ -213,7 +230,8 @@
         "fuelType": "Diesel",
         "tax": 150,
         "mpg": 53.3,
-        "engineSize": 3.0
+        "engineSize": 3.0,
+        "image": "images/bmw2017.jpg"
     },
     {
         "make": "Volkswagen",
@@ -225,7 +243,8 @@
         "fuelType": "Petrol",
         "tax": 30,
         "mpg": 53.3,
-        "engineSize": 1.4
+        "engineSize": 1.4,
+        "image": "images/volkswagenGolf.jpg"
     },
     {
         "make": "Ford",
@@ -237,7 +256,8 @@
         "fuelType": "Petrol",
         "tax": 145,
         "mpg": 49.6,
-        "engineSize": 1.0
+        "engineSize": 1.0,
+        "image": "images/fordFiesta.jpg"
     },
     {
         "make": "Hyundai",
@@ -249,7 +269,8 @@
         "fuelType": "Diesel",
         "tax": 30,
         "mpg": 61.4,
-        "engineSize": 1.7
+        "engineSize": 1.7,
+        "image": "images/hyundaiTucson.jpg"
     },
     {
         "make": "Toyota",
@@ -261,7 +282,8 @@
         "fuelType": "Hybrid",
         "tax": 0,
         "mpg": 78.5,
-        "engineSize": 1.8
+        "engineSize": 1.8,
+        "image": "images/toyotaAuris.jpg"
     },
     {
         "make": "Skoda",
@@ -273,7 +295,8 @@
         "fuelType": "Petrol",
         "tax": 125,
         "mpg": 51.4,
-        "engineSize": 1.2
+        "engineSize": 1.2,
+        "image": "images/skodaYeti.jpg"
     },
     {
         "make": "Hyundai",
@@ -285,7 +308,8 @@
         "fuelType": "Hybrid",
         "tax": 135,
         "mpg": 62.8,
-        "engineSize": 1.6
+        "engineSize": 1.6,
+        "image": "images/hyundaiIoniq.jpg"
     },
     {
         "make": "Volkswagen",
@@ -297,7 +321,8 @@
         "fuelType": "Petrol",
         "tax": 145,
         "mpg": 47.9,
-        "engineSize": 1.0
+        "engineSize": 1.0,
+        "image": "images/volkswagenTcross.jpeg"
     },
     {
         "make": "Tesla",
@@ -309,18 +334,20 @@
         "fuelType": "Electric",
         "tax": 0,
         "mpg": 0,
-        "engineSize": 0
+        "engineSize": 0,
+        "image": "images/tesla3.jpg"
     },
     {
         "make": "Nissan",
         "model": "Leaf",
-        "year": 2020,
+        "year": 2018,
         "price": 17995,
         "transmission": "Automatic",
         "mileage": 22000,
         "fuelType": "Electric",
         "tax": 0,
         "mpg": 0,
-        "engineSize": 0
+        "engineSize": 0,
+        "image": "images/nissanLeaf.jpg"
     }
 ]

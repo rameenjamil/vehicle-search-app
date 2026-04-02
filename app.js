@@ -133,7 +133,13 @@ function renderCars(results, containerId, cardClass, isPreview) {
         imageWrapper.className = 'image-wrapper';
 
         var image = document.createElement('img');
-        image.src = car.image ? car.image : 'images/myicon.png';
+
+        if (car.image && car.image.startsWith('images/')) {
+            image.src = car.image;
+        } else {
+            image.src = 'images/myicon.png';
+        }
+
         image.alt = car.make + ' ' + car.model;
         imageWrapper.appendChild(image)
 
