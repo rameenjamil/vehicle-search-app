@@ -3,7 +3,6 @@ var searchForm = document.forms.searchForm
 
 var data = getData()
 
-var isLoggedIn = false;
 
 // Get the button
 var scrollToTopBtn = document.getElementById("backToTop");
@@ -29,33 +28,12 @@ scrollToTopBtn.addEventListener("click", function () {
 function start() {
     console.log('Page loaded');
 
-    // modal login
-    const openModalBtn = document.getElementById("loginBtn");
-    const modalOverlay = document.getElementById("modalOverlay");
-    const closeModalBtn = document.getElementById("closeModal");
-
-    openModalBtn.addEventListener('click', () => {
-        modalOverlay.style.display = 'flex';
-    });
-
-    closeModalBtn.addEventListener('click', () => {
-        modalOverlay.style.display = 'none';
-    });
-
-    modalOverlay.addEventListener('click', (e) => {
-        if (e.target === modalOverlay) {
-            modalOverlay.style.display = 'none';
-        }
-    });
-
-    document.getElementById("loginForm").addEventListener("submit", handleLogin);
-
     data.then(function (cars) {
         // console.log(cars);
         populateMakeDropdown(cars)
 
         var featured = cars.slice(0, 3)
-        renderResults(featured, 'featuredContainer', 'featured-car')
+        renderResults(featured, 'featuredContainer', 'featured-card', false)
     })
     searchForm.addEventListener('submit', handleFormSubmission);
     document.getElementById('clearBtn').addEventListener('click', clearForm)
@@ -95,23 +73,7 @@ function populateMakeDropdown(cars) {
 function handleFormSubmission(e) {
     console.log('Form submitted');
     e.preventDefault(); //preventing the form from submitting and refreshing the page
-
-    var selectedMake = document.getElementById('make').value;
-    var selectedFuel = document.querySelector('input[name="fuel"]:checked').value;
-    var minPrice = Number(document.getElementById('minPrice').value) || 0; //if the user doesn't enter a value, it will default to 0
-    var maxPrice = Number(document.getElementById('maxPrice').value) || Infinity
-
-    if (minPrice > maxPrice) {
-        alert('Minimum price cannot be greater than maximum price');
-        return;
-    }
-
-    data.then(function (cars) {
-        var results = filterCars(cars, selectedMake, selectedFuel, minPrice, maxPrice);
-        console.log(results);
-        renderResults(results, 'resultContainer', 'car-card');
-        document.getElementById('resultsHeading').classList.remove('hidden');
-    })
+    performSearch(false);
 }
 
 function filterCars(cars, make, fuel, minPrice, maxPrice) {
@@ -153,7 +115,7 @@ function createElement(name, text) {
     return element;
 }
 
-function renderResults(results, containerId, cardClass) {
+function renderResults(results, containerId, cardClass, isPreview) {
     var container = document.getElementById(containerId);
     container.innerHTML = '';
 
@@ -166,16 +128,12 @@ function renderResults(results, containerId, cardClass) {
 
         var card = document.createElement('div');
         card.className = cardClass;
-
         var image = document.createElement('img');
         image.src = car.image || '';
+        if (!car.image) {
+            image.scr = 'images/myicon.png'
+        }
         image.alt = car.make + ' ' + car.model;
-
-        image.onerror = function () {
-            var errorText = createElement('p', 'Image not available');
-            errorText.className = 'image-error';
-            this.replaceWith(errorText);
-        };
 
         var title = createElement('h3', car.make + ' ' + car.model);
         var price = createElement('p', 'Price: £' + car.price.toLocaleString());
@@ -190,51 +148,43 @@ function renderResults(results, containerId, cardClass) {
             alert('You clicked on ' + car.make + ' ' + car.model);
         });
 
-        card.append(image, title, price, fuel, year, button);
+        if (isPreview) {
+            var simple = createElement(
+                'p',
+                car.make + " " + car.model + " - £" + car.price.toLocaleString()
+            );
+            card.append(simple);
+        } else {
+            card.append(image, title, price, fuel, year, button);
+        }
         container.appendChild(card);
     });
 }
 
 function runSearch() {
+    performSearch(true)
+}
+
+function performSearch(isPreview) {
 
     var selectedMake = document.getElementById('make').value;
 
     var fuelInput = document.querySelector('input[name="fuel"]:checked');
     var selectedFuel = fuelInput ? fuelInput.value : '';
 
-    var minPrice = Number(document.getElementById('minPrice').value) || 0;
-    var maxPrice = Number(document.getElementById('maxPrice').value) || Infinity;
+    var minInput = document.getElementById('minPrice').value;
+    var minPrice = minInput === "" ? 0 : Number(minInput);
+
+    var maxInput = document.getElementById('maxPrice').value;
+    var maxPrice = maxInput === "" ? Infinity : Number(maxInput);
 
     data.then(function (cars) {
         var results = filterCars(cars, selectedMake, selectedFuel, minPrice, maxPrice);
-        renderResults(results);
+        if (isPreview) {
+            results = results.slice(0, 5);
+        }
+
+        renderResults(results, 'resultContainer', 'car-card', isPreview);
+        document.getElementById('resultsHeading').classList.remove('hidden');
     });
-}
-
-function handleLogin(e) {
-    e.preventDefault();
-
-    var user = document.getElementById("username").value.trim();
-    var pass = document.getElementById("password").value.trim();
-    var errorMsg = document.getElementById("errorMsg");
-
-    var VALID_USER = "lecturer@test.com";
-    var VALID_PASS = "cars123";
-
-    if (!user.includes("@") || !user.includes(".")) {
-        errorMsg.innerText = "Please enter a valid email address";
-        return;
-    }
-
-    if (user === VALID_USER && pass === VALID_PASS) {
-        isLoggedIn = true;
-
-        document.getElementById("modalOverlay").style.display = 'none';
-        errorMsg.innerText = "";
-
-        alert("Login successful!");
-        document.getElementById("loginBtn").innerText = "Logout";
-    } else {
-        errorMsg.innerText = "Invalid credentials";
-    }
 }

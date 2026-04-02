@@ -17,12 +17,10 @@
         <div class="top-bar">
             <div class="logo-container">
                 <img src="images/myicon.png" alt="AutoMarket logo" class="logo">
-
             </div>
 
             <div class="info">
-                <p id="tel">📞0161 123 4567</p>
-                <button id="loginBtn">Login</button>
+                <h1 id="tel">📞0161 123 4567</h1>
             </div>
         </div>
     </header>
@@ -30,7 +28,7 @@
     <nav id="navBar">
         <a href="#mainContent">Home</a>
         <a href="#featuredCars">Featured</a>
-        <a href="#saved">Saved</a>
+        <a href="#reviews">Reviews</a>
         <a href="#contact">Contact Us</a>
     </nav>
 
@@ -152,23 +150,33 @@
                 </article>
 
                 <article class="brand-card">
-                    <img src="cars logo/Skoda.png" alt="BMW logo">
+                    <img src="cars logo/Skoda.png" alt="Skoda logo">
                     <p>Škoda</p>
                 </article>
 
                 <article class="brand-card">
-                    <img src="cars logo/Mercedes-Benz.png" alt="BMW logo">
+                    <img src="cars logo/Mercedes-Benz.png" alt="Mercedes-Benz logo">
                     <p>Mercedes-Benz</p>
                 </article>
 
                 <article class="brand-card">
-                    <img src="cars logo/toyota.png" alt="BMW logo">
+                    <img src="cars logo/toyota.png" alt="Toyota logo">
                     <p>Toyota</p>
                 </article>
 
                 <article class="brand-card">
-                    <img src="cars logo/hyundai.png" alt="BMW logo">
+                    <img src="cars logo/hyundai.png" alt="Hyundai logo">
                     <p>Hyundai</p>
+                </article>
+
+                <article class="brand-card">
+                    <img src="cars logo/tesla.png" alt="Tesla logo">
+                    <p>Tesla</p>
+                </article>
+
+                <article class="brand-card">
+                    <img src="cars logo/nissan.png" alt="Nissan logo">
+                    <p>Nissan</p>
                 </article>
 
             </div>
@@ -270,10 +278,6 @@
             </div>
         </section>
 
-        <section id="saved">
-            <h2>Saved Vehicles</h2>
-            <p>You have no saved vehicles yet. Please login to save your vehicles.</p>
-        </section>
     </main>
 
     <footer id="contact">
@@ -299,25 +303,6 @@
         <p>© 2026 AutoMarket Vehicle Marketplace</p>
 
     </footer>
-
-    <div class="modal-overlay" id="modalOverlay" style="display:none;">
-        <div class="modal">
-
-            <button class="close-btn" id="closeModal">&times;</button>
-
-            <h2>Login</h2>
-
-            <form id="loginForm">
-                <input type="text" id="username" placeholder="Enter Email" required>
-                <input type="password" id="password" placeholder="Password" required>
-
-                <button type="submit" class="login-btn">Login</button>
-            </form>
-
-            <p id="errorMsg" style="color:red;"></p>
-
-        </div>
-    </div>
 
     <button id="backToTop">
         🔝

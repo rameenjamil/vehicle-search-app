@@ -298,5 +298,29 @@
         "tax": 145,
         "mpg": 47.9,
         "engineSize": 1.0
+    },
+    {
+        "make": "Tesla",
+        "model": "Model 3",
+        "year": 2021,
+        "price": 38999,
+        "transmission": "Automatic",
+        "mileage": 15000,
+        "fuelType": "Electric",
+        "tax": 0,
+        "mpg": 0,
+        "engineSize": 0
+    },
+    {
+        "make": "Nissan",
+        "model": "Leaf",
+        "year": 2020,
+        "price": 17995,
+        "transmission": "Automatic",
+        "mileage": 22000,
+        "fuelType": "Electric",
+        "tax": 0,
+        "mpg": 0,
+        "engineSize": 0
     }
 ]
