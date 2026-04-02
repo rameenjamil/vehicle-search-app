@@ -503,6 +503,11 @@ legend {
     border-left: 5px solid var(--primary-blue);
 }
 
+.strong {
+    font-weight: bold;
+    font-style: italic;
+}
+
 
 /* footer */
 

@@ -15,13 +15,13 @@
     <a href="#mainContent" class="skip-link">Skip to main content</a>
     <header>
         <div class="top-bar">
-            <div class="logo-container">
+            <figure class="logo-container">
                 <img src="images/myicon.png" alt="AutoMarket logo" class="logo">
-            </div>
+            </figure>
 
-            <div class="info">
+            <address class="info">
                 <h1 id="tel">📞0161 123 4567</h1>
-            </div>
+            </address>
         </div>
     </header>
 
@@ -58,7 +58,8 @@
                         <label><input type="radio" name="fuel" value="Hybrid"> Hybrid</label>
                     </fieldset>
 
-                    <div class="price-group">
+                    <fieldset class="price-group">
+                        <legend>Price Range</legend>
                         <div class="form-group">
                             <label for="minPrice">Minimum Price (£)</label>
                             <input type="number" id="minPrice" name="minPrice" min="0">
@@ -67,12 +68,12 @@
                             <label for="maxPrice">Maximum Price (£)</label>
                             <input type="number" id="maxPrice" name="maxPrice" min="0">
                         </div>
-                    </div>
+                    </fieldset>
 
-                    <div class="button-group">
+                    <p class="button-group">
                         <button type="submit">🔍 Search Vehicles</button>
                         <button type="button" id="clearBtn">✕ Clear</button>
-                    </div>
+                    </p>
 
                 </fieldset>
             </form>
@@ -83,7 +84,7 @@
         <!-- aria-live added for accessibility to announce search results updates dynamically -->
         <section aria-live="polite">
             <h2 id="resultsHeading" class="hidden">📜 Results Found:</h2>
-            <div id="resultContainer"></div>
+            <section id="resultContainer"></section>
         </section>
 
         <section id="whyUs">
@@ -91,10 +92,10 @@
                 <h2 id="whyUsHeading">Why Choose AutoMarket? 🚗</h2>
             </div>
 
-            <div class="whyus-container">
+            <header class="whyus-container">
 
                 <article class="whyus-card">
-                    <div class="whyus-icon">🛡️</div>
+                    <span class="whyus-icon" aria-hidden="true">🛡️</span>
                     <h3>Trusted Vehicles</h3>
 
                     <p>All vehicles listed on our platform come from verified dealers and trusted sellers.</p>
@@ -102,7 +103,7 @@
                 </article>
 
                 <article class="whyus-card">
-                    <div class="whyus-icon">💷</div>
+                    <span class="whyus-icon" aria-hidden="true">💷</span>
                     <h3>Transparent Prices</h3>
 
                     <p>Compare prices easily and find the best deals without hidden fees.</p>
@@ -110,84 +111,83 @@
                 </article>
 
                 <article class="whyus-card">
-                    <div class="whyus-icon">🔍</div>
+                    <span class="whyus-icon" aria-hidden="true">🔍</span>
                     <h3>Simple Search</h3>
 
                     <p>Filter vehicles quickly by make, fuel type, year, and price.</p>
 
                 </article>
-            </div>
+            </header>
         </section>
 
         <section id="brands">
             <h2 id="brandsHeading">Our Brands</h2>
 
-            <div class="brands-container">
+            <ul class="brands-container">
 
-                <article class="brand-card">
+                <li class="brand-card">
                     <img src="cars-logo/ford.png" alt="Ford logo">
                     <p>Ford</p>
-                </article>
+                </li>
 
-                <article class="brand-card">
+                <li class="brand-card">
                     <img src="cars-logo/vauxhall.png" alt="Vauxhall logo">
                     <p>Vauxhall</p>
-                </article>
+                </li>
 
-                <article class="brand-card">
+                <li class="brand-card">
                     <img src="cars-logo/volkswagen.png" alt="Volkswagen logo">
                     <p>Volkswagen</p>
-                </article>
+                </li>
 
-                <article class="brand-card">
+                <li class="brand-card">
                     <img src="cars-logo/audi.png" alt="Audi logo">
                     <p>Audi</p>
-                </article>
+                </li>
 
-                <article class="brand-card">
+                <li class="brand-card">
                     <img src="cars-logo/bmw.png" alt="BMW logo">
                     <p>BMW</p>
-                </article>
+                </li>
 
-                <article class="brand-card">
+                <li class="brand-card">
                     <img src="cars-logo/Skoda.png" alt="Skoda logo">
                     <p>Škoda</p>
-                </article>
+                </li>
 
-                <article class="brand-card">
+                <li class="brand-card">
                     <img src="cars-logo/Mercedes-Benz.png" alt="Mercedes-Benz logo">
                     <p>Mercedes-Benz</p>
-                </article>
+                </li>
 
-                <article class="brand-card">
+                <li class="brand-card">
                     <img src="cars-logo/toyota.png" alt="Toyota logo">
                     <p>Toyota</p>
-                </article>
+                </li>
 
-                <article class="brand-card">
+                <li class="brand-card">
                     <img src="cars-logo/hyundai.png" alt="Hyundai logo">
                     <p>Hyundai</p>
-                </article>
+                </li>
 
-                <article class="brand-card">
+                <li class="brand-card">
                     <img src="cars-logo/tesla.png" alt="Tesla logo">
                     <p>Tesla</p>
-                </article>
+                </li>
 
-                <article class="brand-card">
+                <li class="brand-card">
                     <img src="cars-logo/nissan.png" alt="Nissan logo">
                     <p>Nissan</p>
-                </article>
+                </li>
 
-            </div>
+            </ul>
         </section>
 
         <section id="featuredCars">
 
             <h2 id="featuredHeading">Featured Vehicles</h2>
-
-            <div id="featuredContainer" class="featured-container"></div>
-
+            <section id="featuredContainer" class="featured-container">
+            </section>
         </section>
 
         <section id="reviews">
@@ -251,11 +251,6 @@
     <button id="backToTop">
         ▲
     </button>
-
-    <div id="contextMenu" class="context-menu hidden" role="menu">
-        <button role="menuitem" id="saveImage">Save Image</button>
-        <button role="menuitem" id="copyText">Copy Info</button>
-    </div>
 
     <script src="app.js"></script>
 </body>
