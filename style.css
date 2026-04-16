@@ -382,12 +382,6 @@ legend {
     flex-wrap: wrap;
 }
 
-.whyus-wrapper {
-    max-width: 1100px;
-    margin: auto;
-    text-align: center;
-}
-
 .whyus-card {
     background: white;
     padding: 25px;
@@ -524,9 +518,21 @@ footer p {
     margin: 5px 0;
 }
 
+footer a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+#copyright {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
 @media (min-width: 768px) {
     footer {
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: space-between;
         align-items: flex-start;
         text-align: left;
@@ -534,6 +540,12 @@ footer p {
 
     footer section {
         flex: 1;
+    }
+
+    #copyright {
+        flex-basis: 100%;
+        text-align: center;
+        margin-top: 20px;
     }
 }
 
@@ -555,6 +567,11 @@ footer p {
     display: block;
     background-color: var(--primary-blue);
     color: white;
+}
+
+#backToTop:hover {
+    background-color: var(--dark-blue);
+    color: #ffd166;
 }
 
 /* responsive */

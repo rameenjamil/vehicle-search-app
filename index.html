@@ -13,16 +13,14 @@
 <body>
 
     <a href="#mainContent" class="skip-link">Skip to main content</a>
-    <header>
-        <div class="top-bar">
-            <figure class="logo-container">
-                <img src="images/myicon.png" alt="AutoMarket logo" class="logo">
-            </figure>
+    <header class="top-bar">
+        <figure class="logo-container">
+            <img src="images/myicon.png" alt="AutoMarket logo" class="logo">
+        </figure>
 
-            <address class="info">
-                <p id="tel">📞0161 123 4567</p>
-            </address>
-        </div>
+        <address class="info">
+            <p id="tel">📞0161 123 4567</p>
+        </address>
     </header>
 
     <nav id="navBar">
@@ -50,6 +48,11 @@
                         <option value="">Any</option>
                     </select>
 
+                    <label for="model">Model</label>
+                    <select id="model" name="model">
+                        <option value="">Any</option>
+                    </select>
+
                     <fieldset class="fuel-group">
                         <legend>Fuel Type</legend>
                         <label><input type="radio" id="anyFuel" name="fuel" value="" checked> Any</label>
@@ -58,6 +61,11 @@
                         <label><input type="radio" name="fuel" value="Electric"> Electric</label>
                         <label><input type="radio" name="fuel" value="Hybrid"> Hybrid</label>
                     </fieldset>
+
+                    <label for="transmission">Transmission</label>
+                    <select id="transmission" name="transmission">
+                        <option value="">Any</option>
+                    </select>
 
                     <fieldset class="price-group">
                         <legend>Price Range</legend>
@@ -70,6 +78,12 @@
                             <input type="number" id="maxPrice" name="maxPrice" min="0">
                         </div>
                     </fieldset>
+
+                    <label for="minYear">Min Year</label>
+                    <input type="number" id="minYear" placeholder="e.g. 2015">
+
+                    <label for="maxYear">Max Year</label>
+                    <input type="number" id="maxYear" placeholder="e.g. 2023">
 
                     <p class="button-group">
                         <button type="submit">🔍 Search Vehicles</button>
@@ -89,18 +103,14 @@
         </section>
 
         <section id="whyUs">
-            <div class="whyus-wrapper">
-                <h2 id="whyUsHeading">Why Choose AutoMarket? 🚗</h2>
-            </div>
+            <h2 id="whyUsHeading">Why Choose AutoMarket? 🚗</h2>
 
-            <header class="whyus-container">
-
+            <div class="whyus-container">
                 <article class="whyus-card">
                     <span class="whyus-icon" aria-hidden="true">🛡️</span>
                     <h3>Trusted Vehicles</h3>
 
                     <p>All vehicles listed on our platform come from verified dealers and trusted sellers.</p>
-
                 </article>
 
                 <article class="whyus-card">
@@ -108,7 +118,6 @@
                     <h3>Transparent Prices</h3>
 
                     <p>Compare prices easily and find the best deals without hidden fees.</p>
-
                 </article>
 
                 <article class="whyus-card">
@@ -116,9 +125,8 @@
                     <h3>Simple Search</h3>
 
                     <p>Filter vehicles quickly by make, fuel type, year, and price.</p>
-
                 </article>
-            </header>
+            </div>
         </section>
 
         <section id="brands">
@@ -232,14 +240,8 @@
 
         <section>
             <h3>Trusted Partners</h3>
-            <p>Auto Dealers Association</p>
-            <p>Vehicle Standards Agency</p>
-        </section>
-
-        <section>
-            <h3>Contact</h3>
-            <p>Email: support@drivefind.com</p>
-            <p>Phone: 0800 123 456</p>
+            <p><a href="">Auto Dealers Association</a></p>
+            <p><a href="">Vehicle Standards Agency</a></p>
         </section>
 
         <section>
@@ -248,7 +250,13 @@
             <p>Secure Payments</p>
         </section>
 
-        <p>© 2026 AutoMarket Vehicle Marketplace</p>
+        <section>
+            <h3>Contact</h3>
+            <p><a href="mailto:support@automarket.com">Email: support@automarket.com</a></p>
+            <p><a href="tel:+441611234567">Phone: 0161 123 4567</a></p>
+        </section>
+
+        <p id="copyright">&copy; 2026 AutoMarket Vehicle Marketplace</p>
 
     </footer>
 
