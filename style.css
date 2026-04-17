@@ -81,6 +81,16 @@ header {
     gap: 12px;
 }
 
+#menuToggle {
+    display: none;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+}
+
 /* navbar styling */
 
 nav {
@@ -110,6 +120,25 @@ nav a:hover {
     color: #ffd166;
     background-color: var(--dark-blue);
     transform: scale(1.08);
+}
+
+
+/* Mobile styles */
+@media (max-width: 600px) {
+
+    #menuToggle {
+        display: block;
+        margin: 10px auto;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+    }
+
+    nav.show {
+        display: flex;
+    }
 }
 
 /* hero section styling */
@@ -154,11 +183,6 @@ section h2 {
     margin-top: 40px;
     margin-bottom: 20px;
     text-align: center;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
 }
 
 /* search styling */
@@ -300,8 +324,6 @@ legend {
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
     margin-top: 30px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     align-items: stretch;
 }
 
@@ -317,16 +339,12 @@ legend {
     flex-direction: column;
     height: 100%;
     min-height: 350px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .car-card:hover {
     transform: translateY(-5px);
-}
-
-.car-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 .car-card h3,
@@ -366,6 +384,21 @@ legend {
     color: white;
     border-radius: 5px;
     padding: 10px;
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.details-btn:hover {
+    background-color: var(--primary-blue);
+    color: #ffd166;
+    transform: scale(1.02);
+}
+
+@media (max-width: 600px) {
+
+    #resultContainer,
+    .featured-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* why US section */
@@ -470,23 +503,10 @@ legend {
 
 /* featured vehicles */
 
-.featured-container,
-#resultContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
-
 .featured-content {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-}
-
-.featured-content button {
-    margin-top: auto;
-
 }
 
 /* reviews */

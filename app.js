@@ -5,40 +5,38 @@ var data = getData()
 
 var allCars = []
 
-
-
-// Get the button
-var scrollToTopBtn = document.getElementById("backToTop");
-
-// Function to show or hide the button based on scroll position
-window.onscroll = function () {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        scrollToTopBtn.classList.add('show');
-    } else {
-        scrollToTopBtn.classList.remove('show');
-    }
-};
-
-// Function to smoothly scroll back to the top
-scrollToTopBtn.addEventListener("click", function () {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-});
-
-
 function start() {
     console.log('Page loaded');
 
+    var scrollToTopBtn = document.getElementById("backToTop");
+    // Function to show or hide the button based on scroll position
+    window.onscroll = function () {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            scrollToTopBtn.classList.add('show');
+        } else {
+            scrollToTopBtn.classList.remove('show');
+        }
+    };
+    scrollToTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
+    var menuToggle = document.getElementById('menuToggle');
+    var navBar = document.getElementById('navBar');
+
+    menuToggle.addEventListener('click', function () {
+        navBar.classList.toggle('show');
+    });
 
     data.then(function (cars) {
-        // console.log(cars);
         allCars = cars
         populateMakeDropdown(cars)
         populateModelDropdown(cars, '')
         populateTransmissionDropdown(cars)
-        loadFeaturedCars()
+        loadFeaturedCars(cars)
     })
 
     searchForm.addEventListener('submit', handleFormSubmission);
@@ -90,6 +88,11 @@ function populateMakeDropdown(cars) {
     })
 }
 
+/**
+ * Populates the model dropdown based on selected make
+ * @param {Array<Object>} cars - list of vehicles
+ * @param {string} selectedMake - selected car make
+ */
 function populateModelDropdown(cars, selectedMake) {
     var modelSelect = document.getElementById('model');
 
@@ -126,10 +129,13 @@ function populateModelDropdown(cars, selectedMake) {
         option.innerText = model;
         modelSelect.appendChild(option);
     });
-    // console.log("Selected make: ", selectedMake)
-    // console.log("filtered cars:", filteredCars)
 }
 
+
+/**
+ * Populates transmission dropdown with unique values
+ * @param {Array<Object>} cars - list of vehicles
+ */
 function populateTransmissionDropdown(cars) {
     var transmissionSelect = document.getElementById('transmission');
 
@@ -152,6 +158,11 @@ function populateTransmissionDropdown(cars) {
     });
 }
 
+
+/**
+ * Handles form submission event and triggers search
+ * @param {Event} e - form submit event
+ */
 function handleFormSubmission(e) {
     console.log('Form submitted');
     e.preventDefault(); //preventing the form from submitting and refreshing the page
@@ -174,14 +185,6 @@ function filterCars(cars, make, model, fuel, transmission, minPrice, maxPrice, m
     fuel = fuel.toLowerCase();
 
     return cars.filter(function (car) {
-        // console.log("selected make: ", make)  commented out the console logs for debugging purposes
-        // console.log("car make: ", car.make)
-        // console.log("selected model: ", model)
-        // console.log("car model: ", car.model)
-        // console.log("selected fuel: ", fuel)
-        // console.log("car fuel: ", car.fuelType)
-
-
         var matchesMake = make === '' || car.make.toLowerCase() === make;
         var matchesModel = model === '' || car.model.toLowerCase() === model;
         var matchesFuel = fuel === '' || car.fuelType.toLowerCase() === fuel;
@@ -264,6 +267,10 @@ function renderCars(results, containerId, cardClass, isPreview) {
     });
 }
 
+
+/**
+ * Triggers live preview search
+ */
 function runSearch() {
     performSearch(true)
 }
@@ -330,13 +337,16 @@ function createElement(name, text) {
 }
 
 /**
- * Loads and displays featured cars on the homepage
+ * Filters and displays featured vehicles
+ * @param {Array<Object>} cars - list of vehicles
  */
-function loadFeaturedCars() {
+function loadFeaturedCars(cars) {
 
-    var featuredCars = allCars.filter(function (car) {
+    var featuredCars = cars.filter(function (car) {
         return car.featured === true;
     })
         .slice(0, 6);
-    renderCars(featuredCars, 'featuredContainer', 'featured-card', false);
+    renderCars(featuredCars, 'featuredContainer', 'car-card', false);
+
+    console.log("Featured cars:", featuredCars);
 }
