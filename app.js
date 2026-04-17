@@ -38,8 +38,8 @@ function start() {
         populateMakeDropdown(cars)
         populateModelDropdown(cars, '')
         populateTransmissionDropdown(cars)
+        loadFeaturedCars()
     })
-    loadFeaturedCars()
 
     searchForm.addEventListener('submit', handleFormSubmission);
     document.getElementById('clearBtn').addEventListener('click', clearForm)
@@ -48,9 +48,7 @@ function start() {
     document.getElementById('make').addEventListener('change', function () {
         var selectedMake = this.value;
 
-        data.then(function (cars) {
-            populateModelDropdown(cars, selectedMake);
-        });
+        populateModelDropdown(allCars, selectedMake);
 
         runSearch();
     });
@@ -128,8 +126,8 @@ function populateModelDropdown(cars, selectedMake) {
         option.innerText = model;
         modelSelect.appendChild(option);
     });
-    console.log("Selected make: ", selectedMake)
-    console.log("filtered cars:", filteredCars)
+    // console.log("Selected make: ", selectedMake)
+    // console.log("filtered cars:", filteredCars)
 }
 
 function populateTransmissionDropdown(cars) {
@@ -259,15 +257,7 @@ function renderCars(results, containerId, cardClass, isPreview) {
             alert(details);
         });
 
-        if (isPreview) {
-            var message = createElement(
-                'p',
-                car.make + " " + car.model + " - £" + car.price.toLocaleString()
-            );
-            card.append(message);
-        } else {
-            content.append(image, title, price, meta, button);
-        }
+        content.append(title, price, meta, button);
 
         card.append(imageWrapper, content)
         container.appendChild(card);
@@ -303,15 +293,13 @@ function performSearch(isPreview) {
     var maxYearInput = document.getElementById('maxYear').value;
     var maxYear = maxYearInput === "" ? Infinity : Number(maxYearInput);
 
-    data.then(function (cars) {
-        var results = filterCars(cars, selectedMake, selectedModel, selectedFuel, transmission, minPrice, maxPrice, minYear, maxYear);
-        if (isPreview) {
-            results = results.slice(0, 5);
-        }
+    var results = filterCars(allCars, selectedMake, selectedModel, selectedFuel, transmission, minPrice, maxPrice, minYear, maxYear);
+    if (isPreview) {
+        results = results.slice(0, 5);
+    }
 
-        renderCars(results, 'resultContainer', 'car-card', isPreview);
-        document.getElementById('resultsHeading').classList.remove('hidden');
-    });
+    renderCars(results, 'resultContainer', 'car-card', isPreview);
+    document.getElementById('resultsHeading').classList.remove('hidden');
 }
 
 /**
@@ -345,10 +333,10 @@ function createElement(name, text) {
  * Loads and displays featured cars on the homepage
  */
 function loadFeaturedCars() {
-    data.then(function (cars) {
 
-        var featuredCars = cars.slice(0, 3);
-
-        renderCars(featuredCars, 'featuredContainer', 'car-card', false);
-    });
+    var featuredCars = allCars.filter(function (car) {
+        return car.featured === true;
+    })
+        .slice(0, 6);
+    renderCars(featuredCars, 'featuredContainer', 'featured-card', false);
 }

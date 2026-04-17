@@ -127,7 +127,8 @@
         "tax": 0,
         "mpg": 74.3,
         "engineSize": 1.8,
-        "image": "images/toyotaChr.jpg"
+        "image": "images/toyotaChr.jpg",
+        "featured": true
     },
     {
         "make": "Volkswagen",
@@ -231,7 +232,8 @@
         "tax": 150,
         "mpg": 53.3,
         "engineSize": 3.0,
-        "image": "images/bmw2017.jpg"
+        "image": "images/bmw2017.jpg",
+        "featured": true
     },
     {
         "make": "Volkswagen",
@@ -335,7 +337,8 @@
         "tax": 0,
         "mpg": 0,
         "engineSize": 0,
-        "image": "images/tesla3.jpg"
+        "image": "images/tesla3.jpg",
+        "featured": true
     },
     {
         "make": "Nissan",
