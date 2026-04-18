@@ -9,7 +9,7 @@ function start() {
     console.log('Page loaded');
 
     var scrollToTopBtn = document.getElementById("backToTop");
-    // Function to show or hide the button based on scroll position
+
     window.onscroll = function () {
         if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
             scrollToTopBtn.classList.add('show');
@@ -17,6 +17,7 @@ function start() {
             scrollToTopBtn.classList.remove('show');
         }
     };
+
     scrollToTopBtn.addEventListener("click", function () {
         window.scrollTo({
             top: 0,
@@ -24,6 +25,7 @@ function start() {
         });
     });
 
+    // Menu toggle
     var menuToggle = document.getElementById('menuToggle');
     var navBar = document.getElementById('navBar');
 
@@ -31,58 +33,73 @@ function start() {
         navBar.classList.toggle('show');
     });
 
+    // Load data first
     data.then(function (cars) {
-        allCars = cars
-        populateMakeDropdown(cars)
-        populateModelDropdown(cars, '')
-        populateTransmissionDropdown(cars)
-        loadFeaturedCars(cars)
-    })
+        allCars = cars;
 
-    searchForm.addEventListener('submit', handleFormSubmission);
-    document.getElementById('clearBtn').addEventListener('click', clearForm)
+        populateMakeDropdown(cars);
+        populateModelDropdown(cars, '');
+        populateTransmissionDropdown(cars);
+        loadFeaturedCars(cars);
 
-    //instant search functionality - event listeners 
-    document.getElementById('make').addEventListener('change', function () {
-        var selectedMake = this.value;
+        // form submission event
+        searchForm.addEventListener('submit', handleFormSubmission);
 
-        populateModelDropdown(allCars, selectedMake);
+        // change event for make dropdown to update model options and trigger search
+        document.getElementById('make').addEventListener('change', function () {
+            var selectedMake = this.value;
 
-        runSearch();
+            populateModelDropdown(allCars, selectedMake);
+            document.getElementById('model').value = '';
+
+            runSearch();
+        });
+
+        // instant search
+        document.querySelectorAll('input[name="fuel"]').forEach(function (radio) {
+            radio.addEventListener('change', runSearch);
+        });
+
+        document.getElementById('transmission').addEventListener('change', runSearch);
+        document.getElementById('minPrice').addEventListener('input', runSearch);
+        document.getElementById('maxPrice').addEventListener('input', runSearch);
+
+        //evet delegation for details button
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('details-btn')) {
+
+                var car = JSON.parse(e.target.dataset.car);
+
+                var details =
+                    "Make: " + car.make + "\n" +
+                    "Model: " + car.model + "\n" +
+                    "Year: " + car.year + "\n" +
+                    "Price: £" + car.price.toLocaleString() + "\n" +
+                    "Transmission: " + car.transmission + "\n" +
+                    "Fuel Type: " + car.fuelType + "\n" +
+                    "Mileage: " + car.mileage.toLocaleString() + " miles\n" +
+                    "Engine Size: " + car.engineSize + "L\n" +
+                    "MPG: " + car.mpg + "\n" +
+                    "Tax: £" + car.tax;
+
+                alert(details);
+            }
+
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && e.target.tagName !== 'INPUT') {
+                performSearch(false);
+            }
+        });
+        document.getElementById('model').addEventListener('change', runSearch);
+
+        document.getElementById('minYear').addEventListener('input', runSearch);
+        document.getElementById('maxYear').addEventListener('input', runSearch);
+
     });
-    document.querySelectorAll('input[name="fuel"]').forEach(function (radio) {
-        radio.addEventListener('change', runSearch);
-    });
-    document.getElementById('transmission').addEventListener('change', runSearch);
-    document.getElementById('minPrice').addEventListener('input', runSearch);
-    document.getElementById('maxPrice').addEventListener('input', runSearch);
 
-    document.addEventListener('click', function (e) {
-        if (e.target.classList.contains('details-btn')) {
-
-            var index = e.target.dataset.index;
-            var car = allCars[index];
-
-            var details =
-                "Make: " + car.make + "\n" +
-                "Model: " + car.model + "\n" +
-                "Year: " + car.year + "\n" +
-                "Price: £" + car.price.toLocaleString() + "\n" +
-                "Transmission: " + car.transmission + "\n" +
-                "Fuel Type: " + car.fuelType + "\n" +
-                "Mileage: " + car.mileage.toLocaleString() + " miles\n" +
-                "Engine Size: " + car.engineSize + "L\n" +
-                "MPG: " + car.mpg + "\n" +
-                "Tax: £" + car.tax;
-
-            alert(details);
-        }
-    });
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-            performSearch(false);
-        }
-    });
+    document.getElementById('clearBtn').addEventListener('click', clearForm);
 }
 
 /**
@@ -210,6 +227,7 @@ function filterCars(cars, make, model, fuel, transmission, minPrice, maxPrice, m
     make = make.toLowerCase();
     model = model.toLowerCase();
     fuel = fuel.toLowerCase();
+    transmission = transmission ? transmission.toLowerCase() : '';
 
     return cars.filter(function (car) {
         var matchesMake = make === '' || car.make.toLowerCase() === make;
@@ -270,8 +288,7 @@ function renderCars(results, containerId, cardClass, isPreview) {
         var button = createElement('button', 'View Details');
         button.className = 'details-btn';
 
-        button.dataset.index = allCars.indexOf(car);
-
+        button.dataset.car = JSON.stringify(car);
         content.append(title, price, meta, button);
 
         card.append(imageWrapper, content)
@@ -319,6 +336,14 @@ function performSearch(isPreview) {
 
     renderCars(results, 'resultContainer', 'car-card', isPreview);
     document.getElementById('resultsHeading').classList.remove('hidden');
+    console.log({
+        make: selectedMake,
+        model: selectedModel,
+        fuel: selectedFuel,
+        transmission: transmission,
+        minPrice: minPrice,
+        maxPrice: maxPrice
+    });
 }
 
 /**
