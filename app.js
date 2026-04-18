@@ -56,6 +56,33 @@ function start() {
     document.getElementById('transmission').addEventListener('change', runSearch);
     document.getElementById('minPrice').addEventListener('input', runSearch);
     document.getElementById('maxPrice').addEventListener('input', runSearch);
+
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('details-btn')) {
+
+            var index = e.target.dataset.index;
+            var car = allCars[index];
+
+            var details =
+                "Make: " + car.make + "\n" +
+                "Model: " + car.model + "\n" +
+                "Year: " + car.year + "\n" +
+                "Price: £" + car.price.toLocaleString() + "\n" +
+                "Transmission: " + car.transmission + "\n" +
+                "Fuel Type: " + car.fuelType + "\n" +
+                "Mileage: " + car.mileage.toLocaleString() + " miles\n" +
+                "Engine Size: " + car.engineSize + "L\n" +
+                "MPG: " + car.mpg + "\n" +
+                "Tax: £" + car.tax;
+
+            alert(details);
+        }
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            performSearch(false);
+        }
+    });
 }
 
 /**
@@ -243,22 +270,7 @@ function renderCars(results, containerId, cardClass, isPreview) {
         var button = createElement('button', 'View Details');
         button.className = 'details-btn';
 
-        button.addEventListener('click', function () {
-
-            var details =
-                "Make: " + car.make + "\n" +
-                "Model: " + car.model + "\n" +
-                "Year: " + car.year + "\n" +
-                "Price: £" + car.price.toLocaleString() + "\n" +
-                "Transmission: " + car.transmission + "\n" +
-                "Fuel Type: " + car.fuelType + "\n" +
-                "Mileage: " + car.mileage.toLocaleString() + " miles\n" +
-                "Engine Size: " + car.engineSize + "L\n" +
-                "MPG: " + car.mpg + "\n" +
-                "Tax: £" + car.tax;
-
-            alert(details);
-        });
+        button.dataset.index = allCars.indexOf(car);
 
         content.append(title, price, meta, button);
 
